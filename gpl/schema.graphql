@@ -1,0 +1,20 @@
+type MyLaptop {
+  name: String!
+  company: String!
+  CPU: String!
+  Memory: String!
+}
+
+type Person {
+  man_id: Int!
+  name: String!
+  age: Int!
+  gender: String!
+}
+
+type Query {
+  name: String!
+  laptop: MyLaptop!
+  people: [Person]!
+  person(man_id: Int!): Person!
+}
