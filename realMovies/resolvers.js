@@ -1,14 +1,19 @@
-import { getById, getMovies, deleteMovie, addMovie } from './db';
+import {
+  getMovies,
+  getMoviesRQ,
+  getAxiosMovie,
+  getAxiosMovies,
+  getSuggestions,
+} from './db';
 
-const movieResolvers = {
+const realMovieResolvers = {
   Query: {
     movies: () => getMovies(),
-    movie: (_, { id }) => getById(id),
-  },
-  Mutation: {
-    addMovie: (_, { name, score }) => addMovie(name, score),
-    deleteMovie: (_, { id }) => deleteMovie(id),
+    moviez: (_, { limit, rating }) => getMoviesRQ(limit, rating),
+    movieA: (_, { id }) => getAxiosMovie(id),
+    movieB: (_, { limit, rating }) => getAxiosMovies(limit, rating),
+    movieC: (_, { id }) => getSuggestions(id),
   },
 };
 
-export default movieResolvers;
+export default realMovieResolvers;
